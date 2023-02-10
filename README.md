@@ -1,16 +1,70 @@
-# flutter_ornek2
+# Null Safety 
 
-A new Flutter project.
 
-## Getting Started
+|Değişken -----> değer(x)|
+|------------------------|
+|    değişken.x(true)    |
 
-This project is a starting point for a Flutter application.
+  
+|Değişken -----> X null    | 
+|--------------------------|
+|  değişken.x(false)       |
 
-A few resources to get you started if this is your first Flutter project:
+***
+  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#### Non-nullable;
+Mutlaka bir nesneye bakan referans.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+String s ; // non-nullable böyle oluşturuluyor  
+// Buna kadar gördüğün tüm değerler null-nullable mutlaka nesneye bakan bir referans içeriyorlar.  
+
++ Çalışma anında oluşabilecek bir çok hatayı önler.  
+
++ Gereksiz kontrolleri ekarte eder app çok daha verimli olur.  
+---
+  
+
+#### Nullable; 
+Nesneye bakmama opsiyonu var.  
+
+String? s ;
+// nullable böyle oluşturulur  
+
++ Kullandığımız kütüphaneler bazen null`ı kullanır.  
+// Anlamlı bir değer ifade ediyor bizim kütüphanelerimizde. 
+
++ Örneğin; 
+  map[key] bir nullable tür döner. 
+ ---
+
+  
+
+### NULLABLE REFERANSLAR İLE BAŞA ÇIKMAK  
+```flutter
+Null assertion ; 
+nonNullableRef=nullableRef 
+
+ 
+Type promotin ; 
+if(nullableRef!=null)nonNullableRef=nullableRef 
+// Nullable olan değeri non-nullable olarak kullanmamızı sağlıyor 
+
+  
+Null-aware operatorler ; 
+nullableRef?.field // eger yoksa komple null ol demis oluyoruz bu kodla  
+// Eğer nullableRef nullsa 'nullableRef?.field' komple null olsun eğer değilse o zaman onun içindei fiel de bakalım demekç  
+
+  
+
+nullableRef??nonNullRef 
+// Eğer soldaki null ise sağdakini alıyor bu experssion değer olarak. 
+// Eğer soldaki null değilse soldaki alıyor expression değer olarak 
+// Yani bu nalsa öbürünü al mantığı.   
+
+  
+
+nullableRef??=nonNullRef  
+//Eğer soldaki değişken null ise sağdakini soldakinin içine atıyor bir assignment yapıyor bu da faydalı bir operator.  
+```
+  
